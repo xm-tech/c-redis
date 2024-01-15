@@ -1,10 +1,14 @@
 
-obj = zmalloc.o main.o
+cur_src = ${wildcard *.c}
+cur_obj = ${patsubst %.c, %.o, $(cur_src)}
+
+# obj = zmalloc.o main.o
 
 all : main
 
 # main 是目标文件，$(obj)是依赖文件，cc -o $@ $^ 是生成目标的方法
-main : $(obj)
+# main : $(obj)
+main : $(cur_obj)
 	# $@: 目标文件 $^: 依赖文件
 	cc -o $@ $^
 
